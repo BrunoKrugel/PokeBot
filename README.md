@@ -13,7 +13,7 @@ The bot will also randonly curse someone from the server at any time.
 
 PokeBot requires [Node.js](https://nodejs.org/) v4+ to run.
 
-Add the bot in your server with link [PokeBot](https://discordapp.com/oauth2/authorize?&client_id=653738440634007562&scope=bot&permissions=8)
+Add the bot in your server with link [PokeBot](https://discordapp.com/oauth2/authorize?&client_id=717236422658228244&scope=bot&permissions=8)
 
 Install the dependencies and start the server.
 
