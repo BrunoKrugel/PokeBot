@@ -72,7 +72,11 @@ const ofensas = [
     " reza 3 pau nosso",
     " joga new world",
     " joga de yumi externa",
-    " goza com pau dos outros"
+    " goza com pau dos outros",
+    " é jogador de new world",
+    " deixa a porta aberta no rust",
+    " tem cu de aperta linguiça",
+    " vai morre sozinho"
 ];
 
 //Pokedex
@@ -105,12 +109,6 @@ client.on('messageCreate', async message => {
     //@all
     if (!message.content.startsWith(process.env.prefix) && message.mentions.everyone && !message.author.bot) return message.channel.send('Ta marcando pq é corno?');
 
-    // Mensagem customizada
-    var mens = Math.floor((Math.random() * 20) + 1);
-    if (parseInt(mens) < parseInt(10)) {
-        message.channel.send(message.author.toString() + " " + ofensas[Math.floor(Math.random() * ofensas.length)]);
-    }
-
     //=============Pokemon spawn============
     // Matematica inicial
     var poke = Math.floor((Math.random() * 10) + 1);
@@ -142,6 +140,12 @@ client.on('messageCreate', async message => {
         }
         console.log('Depois: ' + await pogo.get('poke'));
     };
+
+    // Mensagem customizada
+    var mens = Math.floor((Math.random() * 20) + 1);
+    if (parseInt(mens) < parseInt(10)) {
+        message.channel.send(message.author.toString() + ofensas[Math.floor(Math.random() * ofensas.length)]);
+    }    
 
     //========================== Ignora o proprio bot e mensagens q n sejam para o bot =======================
     if (!message.content.toLowerCase().startsWith(process.env.prefix)) return;
