@@ -76,7 +76,8 @@ const ofensas = [
     " é jogador de new world",
     " deixa a porta aberta no rust",
     " tem cu de aperta linguiça",
-    " vai morre sozinho"
+    " vai morre sozinho",
+    " achou que o penta era dele"
 ];
 
 //Pokedex
