@@ -17,69 +17,6 @@ const pogo = new Keyv(); // for in-memory storage
 const dotenv = require('dotenv');
 dotenv.config();
 
-const peixes = [
-    'https://i.imgur.com/8q8tCpJ.png',
-    'https://i.imgur.com/t7xxQvM.png',
-    'https://i.imgur.com/G44kVY7.png',
-    'https://i.imgur.com/Mxme9dt.png',
-    'https://i.imgur.com/cZdrfpF.png',
-    'https://i.imgur.com/cyP98eU.png',
-    'https://i.imgur.com/yDWzesj.png',
-    'https://i.imgur.com/hrmfOym.png',
-    'https://i.imgur.com/2a9ivW1.png',
-    'https://i.imgur.com/CfLxk0c.png',
-    'https://i.imgur.com/0UObVR1.png',
-    'https://i.imgur.com/TkJAbwN.png',
-    'https://i.imgur.com/l3svjDw.png',
-    'https://i.imgur.com/MoDTqst.png',
-    'https://i.imgur.com/EzOFO9L.png',
-    'https://i.imgur.com/zJ7naVj.png',
-    'https://i.imgur.com/q0dtE3T.png',
-    'https://i.imgur.com/f1TWTFU.png',
-    'https://i.imgur.com/mqOeipV.png',
-    'https://i.imgur.com/zQwM1tI.png',
-    'https://i.imgur.com/dXR9WTp.png',
-    'https://i.imgur.com/eLSJ0ap.png',
-    'https://i.imgur.com/QrWqbal.png',
-    'https://i.imgur.com/YSmpeXI.png',
-    'https://i.imgur.com/Cvg38Rd.png',
-    'https://i.imgur.com/pfn0jzn.png',
-    'https://i.imgur.com/IGEj1Kj.png',
-    'https://i.imgur.com/vXXmf5m.png',
-    'https://i.imgur.com/TdfbTHH.png',
-    'https://i.imgur.com/kP5WVBY.png',
-    'https://i.imgur.com/UyBQMAc.png',
-    'https://i.imgur.com/jadIWJy.png',
-];
-
-const ofensas = [
-    ", tem dois cu",
-    " tem pau pequeno",
-    " é corno",
-    " vai ti fude",
-    " queima a rosca",
-    " enfia no cu",
-    " tem tourette",
-    " comeu os cu do Zielort",
-    " tem inveja do kyogre do biluga",
-    " feeda no badorants",
-    " come minhoca no sea of thieves",
-    " é chifrudo",
-    " guampudo do caralho",
-    " queimou carne de peixe e botou a culpa no bk",
-    " fez o Zielort quitar do discord",
-    " ficou com pressão baixa no oral",
-    " reza 3 pau nosso",
-    " joga new world",
-    " joga de yumi externa",
-    " goza com pau dos outros",
-    " é jogador de new world",
-    " deixa a porta aberta no rust",
-    " tem cu de aperta linguiça",
-    " vai morre sozinho",
-    " achou que o penta era dele"
-];
-
 //Pokedex
 var pokedex = require('./pokedex.json');
 
@@ -141,12 +78,6 @@ client.on('messageCreate', async message => {
         console.log('Depois: ' + await pogo.get('poke'));
     }
 
-    // Mensagem customizada
-    var mens = Math.floor((Math.random() * 20) + 1);
-    if (parseInt(mens) < parseInt(10)) {
-        message.channel.send(message.author.toString() + ofensas[Math.floor(Math.random() * ofensas.length)]);
-    }    
-
     //========================== Ignora o proprio bot e mensagens q n sejam para o bot =======================
     if (!message.content.toLowerCase().startsWith(process.env.prefix)) return;
 
@@ -166,14 +97,6 @@ client.on('messageCreate', async message => {
                 message.delete();
                 // 9 = "poke say "
                 message.channel.send(sayMessage.slice(9));
-                break;
-            case "peixe":
-                const exampleEmbed = new MessageEmbed()
-                    .setImage(peixes[Math.floor(Math.random() * peixes.length)].toString());
-                message.channel.send({
-                    embeds: [exampleEmbed]
-                });
-
                 break;
             case "help":
                 break;
