@@ -82,7 +82,6 @@ const ofensas = [
 
 //Pokedex
 var pokedex = require('./pokedex.json');
-//let pokedex = JSON.parse(pkm);
 
 //Logs
 client.once('ready', () => {
@@ -115,10 +114,10 @@ client.on('messageCreate', async message => {
     var poke = Math.floor((Math.random() * 10) + 1);
     console.log('Inicial: ' + await pogo.get('poke'));
     var pokequest = await pogo.get('poke');
+    var imagem = Math.floor((Math.random() * 151) + 1);
 
     //Se não existe pokemon escolhido e 30% de chance de spawnar
     if (parseInt(poke) > parseInt(7) && ((pokequest == '0') || typeof pokequest == "undefined")) {
-        var imagem = Math.floor((Math.random() * 151) + 1);
         console.log('Pokedex: ' + pokemon[imagem - 1].toLowerCase());
 
         const exampleEmbed = new MessageEmbed()
@@ -140,7 +139,7 @@ client.on('messageCreate', async message => {
             message.channel.send(message.author.toString() + ' acertou');
         }
         console.log('Depois: ' + await pogo.get('poke'));
-    };
+    }
 
     // Mensagem customizada
     var mens = Math.floor((Math.random() * 20) + 1);
@@ -156,7 +155,6 @@ client.on('messageCreate', async message => {
 
     if (message.content.toLowerCase().startsWith(process.env.prefix)) {
         let primary = args[1];
-        let secondary = args[2];
         //=================
         switch (primary) {
             case "catch":
@@ -165,7 +163,7 @@ client.on('messageCreate', async message => {
                 //============== Fun Section
             case "say":
                 const sayMessage = args.join(" ");
-                message.delete().catch(O_o => {});
+                message.delete();
                 // 9 = "poke say "
                 message.channel.send(sayMessage.slice(9));
                 break;
@@ -182,6 +180,6 @@ client.on('messageCreate', async message => {
             default:
                 break;
         }
-    };
+    }
 });
 client.login(process.env.token);
