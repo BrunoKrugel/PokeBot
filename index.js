@@ -38,10 +38,10 @@ client.on('messageCreate', async message => {
     var poke = Math.floor((Math.random() * 10) + 1);
     console.log('Inicial: ' + await pogo.get('poke'));
     var pokequest = await pogo.get('poke');
-    var imagem = Math.floor((Math.random() * 151) + 1);
+    var imagem = Math.floor((Math.random() * 898) + 1);
 
     //Se não existe pokemon escolhido e 30% de chance de spawnar
-    if (parseInt(poke) > parseInt(7) && ((pokequest == '0') || typeof pokequest == "undefined")) {
+    if (parseInt(poke) > parseInt(6) && ((pokequest == '0') || typeof pokequest == "undefined")) {
         console.log('Pokedex: ' + pokemon[imagem - 1].toLowerCase());
 
         const exampleEmbed = new MessageEmbed()
