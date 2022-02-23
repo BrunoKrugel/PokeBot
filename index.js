@@ -46,7 +46,9 @@ client.on('messageCreate', async message => {
 
         const exampleEmbed = new MessageEmbed()
             .setTitle('Quem é esse pokemon?')
-            .setImage('https://raw.githubusercontent.com/BrunoKrugel/PokemonImages/master/1GEN/' + imagem + '.png');
+      //    .setImage('https://raw.githubusercontent.com/BrunoKrugel/PokemonImages/master/1GEN/' + imagem + '.png');
+            .setImage('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/' + imagem + '.png')
+            .setColor('#0099ff');
         message.channel.send({
             embeds: [exampleEmbed]
         });
