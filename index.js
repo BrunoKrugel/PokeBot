@@ -63,6 +63,8 @@ client.on('messageCreate', async message => {
         if (message.content.toLowerCase() == pokemon[question - 1].toLowerCase()) {
             await pogo.set('poke', 0);
             message.channel.send(message.author.toString() + ' acertou');
+
+            console.log(message.author.toString());
         }
         console.log('Depois: ' + await pogo.get('poke'));
     }
