@@ -58,7 +58,7 @@ client.on('messageCreate', async message => {
     if ((question != 0) && (typeof question !== "undefined")) {
         console.log('Entrou pois: ' + question + ' e ' + pokemon[question - 1].toLowerCase());
         console.log(message.content.toLowerCase());
-        if (message.content.toLowerCase() == pokemon[quest1ion - 1].toLowerCase()) {
+        if (message.content.toLowerCase() == pokemon[question - 1].toLowerCase()) {
             await pogo.set('poke', 0);
             message.channel.send(message.author.toString() + ' acertou');
         }
