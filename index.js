@@ -12,19 +12,15 @@ const pokemon = require('./pokemon.json');
 
 //Save
 const Keyv = require('keyv');
-const pogo = new Keyv(); // for in-memory storage
+const pogo = new Keyv();
 
 const dotenv = require('dotenv');
 dotenv.config();
-
-//Pokedex
-var pokedex = require('./pokedex.json');
 
 //Logs
 client.once('ready', () => {
     console.log("Bot has started.");
     client.user.setActivity("Pokemon");
-    console.log(pokedex.pokemon.abra);
 });
 client.once('reconnecting', () => {
     console.log('Reconnecting!');
@@ -33,18 +29,9 @@ client.once('disconnect', () => {
     console.log('Disconnected!');
 });
 
-client.on("guildMemberAdd", (member) => {
-    member.guild.defaultChannel.send('${member.user} chegou.');
-});
-
 //Evento de mensagens
 client.on('messageCreate', async message => {
-
-    // Se não for o proprio bot
     if (message.author.bot) return;
-
-    //@all
-    if (!message.content.startsWith(process.env.prefix) && message.mentions.everyone && !message.author.bot) return message.channel.send('Ta marcando pq é corno?');
 
     //=============Pokemon spawn============
     // Matematica inicial
@@ -71,7 +58,7 @@ client.on('messageCreate', async message => {
     if ((question != 0) && (typeof question !== "undefined")) {
         console.log('Entrou pois: ' + question + ' e ' + pokemon[question - 1].toLowerCase());
         console.log(message.content.toLowerCase());
-        if (message.content.toLowerCase() == pokemon[question - 1].toLowerCase()) {
+        if (message.content.toLowerCase() == pokemon[quest1ion - 1].toLowerCase()) {
             await pogo.set('poke', 0);
             message.channel.send(message.author.toString() + ' acertou');
         }
@@ -80,29 +67,5 @@ client.on('messageCreate', async message => {
 
     //========================== Ignora o proprio bot e mensagens q n sejam para o bot =======================
     if (!message.content.toLowerCase().startsWith(process.env.prefix)) return;
-
-    //Salva os parametros em ARGS    
-    const args = message.content.split(' ');
-
-    if (message.content.toLowerCase().startsWith(process.env.prefix)) {
-        let primary = args[1];
-        //=================
-        switch (primary) {
-            case "catch":
-                //https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png change number
-                break;
-                //============== Fun Section
-            case "say":
-                const sayMessage = args.join(" ");
-                message.delete();
-                // 9 = "poke say "
-                message.channel.send(sayMessage.slice(9));
-                break;
-            case "help":
-                break;
-            default:
-                break;
-        }
-    }
 });
 client.login(process.env.token);
