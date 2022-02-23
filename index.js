@@ -64,13 +64,16 @@ client.on('messageCreate', async message => {
             await pogo.set('poke', 0);
             message.channel.send(message.author.toString() + ' acertou');
 
-            const user = client.users.cache.get(message.author.toString());
-            console.log(user.username);
+            let user = message.member;
+            user = user.toString();
+            if (user.includes("!")) {
+                user = user.split("!")[1].split(">")[0];
+            } else {
+                user = user.split("@")[1].split(">")[0];
+            }
+            console.log(client.users.get(user).username);
         }
         console.log('Depois: ' + await pogo.get('poke'));
     }
-
-    //========================== Ignora o proprio bot e mensagens q n sejam para o bot =======================
-    if (!message.content.toLowerCase().startsWith(process.env.prefix)) return;
 });
 client.login(process.env.token);
