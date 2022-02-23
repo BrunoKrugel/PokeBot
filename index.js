@@ -17,6 +17,18 @@ const pogo = new Keyv();
 const dotenv = require('dotenv');
 dotenv.config();
 
+function getUsername(user) {
+    user = user.toString();
+    if (user.includes("!")) {
+        user = user.split("!")[1].split(">")[0];
+    } else {
+        user = user.split("@")[1].split(">")[0];
+    }
+    let username = client.users.cache.get(user);
+    if (!username) return console.log("Couldn't find the user");
+    return username.username;
+}
+
 //Logs
 client.once('ready', () => {
     console.log("Bot has started.");
@@ -46,7 +58,7 @@ client.on('messageCreate', async message => {
 
         const exampleEmbed = new MessageEmbed()
             .setTitle('Quem é esse pokemon?')
-      //    .setImage('https://raw.githubusercontent.com/BrunoKrugel/PokemonImages/master/1GEN/' + imagem + '.png');
+            //    .setImage('https://raw.githubusercontent.com/BrunoKrugel/PokemonImages/master/1GEN/' + imagem + '.png');
             .setImage('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/' + imagem + '.png')
             .setColor('#0099ff');
         message.channel.send({
@@ -64,14 +76,7 @@ client.on('messageCreate', async message => {
             await pogo.set('poke', 0);
             message.channel.send(message.author.toString() + ' acertou');
 
-            let user = message.member;
-            user = user.toString();
-            if (user.includes("!")) {
-                user = user.split("!")[1].split(">")[0];
-            } else {
-                user = user.split("@")[1].split(">")[0];
-            }
-            console.log(client.users.get(user).username);
+            console.log(getUsername(message.member));
         }
         console.log('Depois: ' + await pogo.get('poke'));
     }
