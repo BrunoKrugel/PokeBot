@@ -6,8 +6,8 @@ The bot will also randonly curse someone from the server at any time.
 
 # To be implemented:
 
-  - Disable curse 
   - Save the pokemons that you catch
+  - Points for successful guesses
 
 ### Installation
 
