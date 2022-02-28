@@ -1,6 +1,8 @@
 # PokeBot
 
-PokeBot is a little bot who spawns pokemons from the first generation and let you guess the name.
+[![CodeFactor](https://www.codefactor.io/repository/github/brunokrugel/pokebot/badge)](https://www.codefactor.io/repository/github/brunokrugel/pokebot)
+
+PokeBot is a little bot who spawns pokemons from all generations and let you guess the name.
 
 The bot will also randonly curse someone from the server at any time.
 
