@@ -4,8 +4,6 @@
 
 PokeBot is a little bot who spawns pokemons from all generations and let you guess the name.
 
-The bot will also randonly curse someone from the server at any time.
-
 # To be implemented:
 
   - Save the pokemons that you catch
@@ -20,7 +18,6 @@ Add the bot in your server with link [PokeBot](https://discordapp.com/oauth2/aut
 Install the dependencies and start the server.
 
 ```sh
-$ cd pokebot
-$ npm install -d
-$ node index.js
+$ npm install
+$ npm start
 ```
