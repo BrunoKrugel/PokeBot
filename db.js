@@ -4,6 +4,11 @@ const URL = "mongodb://localhost:27017/";
 const MONGO_DB = "PokeBot";
 const DB_TABLE = "Score";
 
+
+const dotenv = require('dotenv');
+dotenv.config();
+const uri = process.env.MONGODB_URI;
+
 function updateScore(user) {
   MongoClient.connect(URL, function (err, client) {
     if (err) throw err;
