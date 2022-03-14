@@ -1,4 +1,10 @@
 var MongoClient = require('mongodb').MongoClient;
+const mongoose = require('mongoose');
+
+const Score = mongoose.model('Score', mongoose.Schema({
+  name: String,
+  score: Number
+}));
 
 const URL = "mongodb://localhost:27017/";
 const MONGO_DB = "PokeBot";
@@ -8,6 +14,32 @@ const DB_TABLE = "Score";
 const dotenv = require('dotenv');
 dotenv.config();
 const uri = process.env.MONGODB_URI;
+
+async function connectDB(){
+  try {
+    console.log("Connecting to database...");
+    await mongoose.connect(process.env.MONGODB_URI);
+  } catch (error) {
+    console.log(error);
+  }
+}
+module.exports.connectDB=connectDB;
+
+async function updateScores(name){
+  await Score.updateOne({ name: name}, { $inc: { score: 1 } }, { upsert: true });
+}
+module.exports.updateScores=updateScores;
+
+
+function getScores(name){
+  return Score.findOne({ name: name }).exec();
+}
+module.exports.getScores=getScores;
+
+function getAllScores(){
+  return Score.find({}).exec();
+}
+
 
 function updateScore(user) {
   MongoClient.connect(URL, function (err, client) {
@@ -52,11 +84,11 @@ async function getRanking() {
 }
 module.exports.getRanking=getRanking;
 
-user = "oguilher";
-getRanking().then(value => console.log(value));
-//console.log(getScore("oguilher"));
-
-/* .sort({score: -1}).limit(5).toArray( function (err, result) {
-      if (err) throw err;      
-      client.close();
-    }); */
+connectDB();
+updateScores('oguilher');
+getScores('oguilher').then(value => console.log(value.score));
+getAllScores().then(value =>{
+  value.forEach(element => {
+    console.log(element.name + ": " + element.score);
+  })} 
+);
