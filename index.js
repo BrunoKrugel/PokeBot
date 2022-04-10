@@ -10,6 +10,8 @@ const client = new Client({
 
 const pokemon = require('./pokemon.json');
 
+const db = require('./db');
+
 //Save
 const Keyv = require('keyv');
 const pogo = new Keyv();
