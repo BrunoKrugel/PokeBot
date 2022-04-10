@@ -3,7 +3,6 @@
     "discord.js": "^13.6.0",
     "dotenv": "^10.0.0",
     "keyv": "^4.0.4",
-    "mongodb": "^4.4.1",
     "mongoose": "^6.2.6"
   },
   "name": "pokebot",
